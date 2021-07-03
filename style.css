@@ -79,13 +79,13 @@ main {
   height: 30vh;
   margin: .5rem;
   background: var(--boxColor);
-  box-shadow: var(--boxShadow);
-  -webkit-box-shadow: var(--boxShadow);
+  /* box-shadow: var(--boxShadow); */
+  /* -webkit-box-shadow: var(--boxShadow); */
   border-radius: var(--radius);
   z-index: 2;
 }
 
-.neuModel {
+#neuModel {
   width: var(--neuSize);
   height: var(--neuSize);
   min-width: 10px;
@@ -95,7 +95,7 @@ main {
   border-radius: var(--neuRadius);
   box-shadow: var(--neuDepth);
   -webkit-box-shadow: var(--neuDepth);
-  z-index: 3;
+  z-index: 10;
 }
 
 .signature {
@@ -111,6 +111,7 @@ main {
 
 .sliderPanel {
   width: 100%;
+  max-width: 550px;
   margin: 0 auto;
   grid-area: settings;
   display: flex;
@@ -125,7 +126,7 @@ main {
   display: none;
 }
 
-.slidecontainer {
+.slideContainer {
   width: 100%;
   min-width: 320px;
   padding: 0rem 1rem;
@@ -204,10 +205,12 @@ main {
   min-width: 55%;
   border-radius: 5px;
   background: var(--boxColor);
+  color: whitesmoke;
+  text-align: center;
 }
 
-#source {
-  color: whitesmoke;
+#icon {
+  display: none;
 }
 
 .toolTip {
@@ -245,17 +248,30 @@ main {
   .model {
     margin: .5rem;
   }
-  
+
   .code {
-    display: none;
+    padding: .5em 0;
+    justify-content: center;
+    min-width: 35%;
+  }
+
+  #icon {
+    display: block;
   }
   
+  #source {
+    display: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
   .sliderPanel {
     height: 100%;
     display: block;
   }
   
-  .slidecontainer {
+  .slideContainer {
     height: 100%;
     padding: 1rem;
   } 

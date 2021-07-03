@@ -9,63 +9,9 @@
     root.style.setProperty("--boxColor", boxColor);
   }
   
-//   Box Shadow Slider Controls
   
-  const xOffset = document.getElementById("xOffset");
-  const yOffset = document.getElementById("yOffset");
-  const blur = document.getElementById("blur");
-  const opcaity = document.getElementById("opacity");
-  const sliderAll = document.getElementById("radius");
-  const root = document.documentElement;
-  let x = 0,
-    y = 0,
-    b = 20,
-    o = .25;
-  let tl = 5,
-    tr = 5,
-    br = 5,
-    bl = 5;
   
-    console.log(opacity)                       
-  xOffset.addEventListener("input", (e) => {
-    x = e.target.value;
-    setShadow();
-  });
-  
-  yOffset.addEventListener("input", (e) => {
-    y = e.target.value;
-    setShadow();
-  });
-  
-  blur.addEventListener("input", (e) => {
-    b = e.target.value;
-    setShadow();
-  });
-  
-  opacity.addEventListener("input", (e) => {
-    o = e.target.value;
-    setShadow();
-  });
-  
-  sliderAll.addEventListener("input", (e) => {
-    tl = e.target.value;
-    tr = e.target.value;
-    br = e.target.value;
-    bl = e.target.value;
-    setRadius();
-  });
-  
-  function setShadow() {
-    boxShadow = `${x}px ${y}px ${b}px rgba(0,0,0,${o})`;
-    root.style.setProperty("--boxShadow", boxShadow);
-  }
-
-  function setRadius() {
-    radius = `${tl}px ${tr}px ${br}px ${bl}px`;
-    root.style.setProperty("--radius", radius);
-  }
-  
-//  Neumorphism Slider Controls
+  //  Neumorphism Slider Controls
   
   const nSize = document.getElementById("neuSize");
   const nDepth = document.getElementById("neuDepth");
@@ -73,7 +19,8 @@
   const nRadius = document.getElementById("neuRadius");
   const threeDepth = document.getElementById("threeDepth");
   const threeStrength = document.getElementById("threeStrength");
-  var neuModel = document.getElementById("neuModel");
+  const neuModel = document.getElementById("neuModel");
+  const root = document.documentElement;
   let s = 50,
       nx = 0,
       ny = 0,
@@ -118,7 +65,6 @@
     tx = e.target.value;
     ty = e.target.value;
     tb = 2*(e.target.value);
-    setShadow();
     setDepth();
     setCss();
   });
@@ -126,7 +72,6 @@
   threeStrength.addEventListener("input", (e) => {
     td = e.target.value;
     tw = e.target.value;
-    setShadow();
     setDepth();
     setCss();
   });
@@ -167,13 +112,13 @@
   document.getElementById("toolTip").addEventListener("mouseout", resetCopy)
   
   function alertCopy () {
-    var tooltip = document.getElementById("toolTip");
+    const tooltip = document.getElementById("toolTip");
     tooltip.style.setProperty("opacity", .85);
   }
   
   function copyToClipboard() {
-    var tooltip = document.getElementById("toolTip");
-    var range = document.createRange();
+    const tooltip = document.getElementById("toolTip");
+    const range = document.createRange();
     range.selectNode(document.getElementById("source"));
     window.getSelection().removeAllRanges(); // clear current selection
     window.getSelection().addRange(range); // to select text

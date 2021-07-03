@@ -6,20 +6,28 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link rel="stylesheet" href="style.css" />
-		<title>Better Neumorphism Generator</title>
+		<title>Better Neumorphism</title>
 	</head>
 	<body>
 		<main>
             <div class="modelWrapper">
-				<h1 class="title">Neumorphisim Generator</h1>
+				<h1 class="title">Better Neumorphisim</h1>
 				<div class="model">
 					<div class="neuModel" id="neuModel"></div>
 				</div>
 				<div class="signature">@Drucial</div>
 			</div>
 			<div class="sliderPanel">
-				<div class="slidecontainer">
-					<div class="sub title">Neumorphism</div>
+				<div class="slideContainer">
+					<div class="form-group">
+						<label for="color">Color</label>
+						<input
+							type="text"
+							class="hexInput"
+							id="color"
+							placeholder="CSS, HEX, RGB Colors"
+						/>
+					</div>
 					<div class="form-group">
 						<label for="neuDepth">Depth</label>
 						<input
@@ -90,76 +98,9 @@
 						/>
 					</div>
 				</div>
-				<div class="slidecontainer">
-					<div class="sub title">Box Shadow</div>
-					<div class="form-group">
-						<label for="color">Color</label>
-						<input
-							type="text"
-							class="hexInput"
-							id="color"
-							placeholder="CSS, HEX, RGB Colors"
-						/>
-					</div>
-					<div class="form-group">
-						<label for="xOffset">X-Offset</label>
-						<input
-							type="range"
-							min="-50"
-							max="50"
-							value="0"
-							class="slider"
-							id="xOffset"
-						/>
-					</div>
-					<div class="form-group">
-						<label for="yOffset">Y-Offset</label>
-						<input
-							type="range"
-							min="-50"
-							max="50"
-							value="0"
-							class="slider"
-							id="yOffset"
-						/>
-					</div>
-					<div class="form-group">
-						<label for="blur">Blur</label>
-						<input
-							type="range"
-							min="0"
-							max="50"
-							value="20"
-							class="slider"
-							id="blur"
-						/>
-					</div>
-					<div class="form-group">
-						<label for="opacity">Opacity</label>
-						<input
-							type="range"
-							min="0"
-							max="1"
-							step="0.01"
-							value=".25"
-							class="slider"
-							id="opacity"
-						/>
-					</div>
-					<div class="form-group">
-						<label for="radius">Radius</label>
-						<input
-							type="range"
-							class="slider"
-							id="radius"
-							min="0"
-							max="50"
-							value="10"
-						/>
-					</div>
-				</div>
 			</div>
-			<div class="code">
+			<footer class="code">
+				<p id="icon">&lt; / &gt;</p>
 				<p id="source">
 					box-shadow: 0px 0px 0px rgba(0,0,0,0.25),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0px
 					0px 0px rgba(255,255,255,0.25),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inset
@@ -169,8 +110,10 @@
 				<div class="toolTip" id="toolTip">
 					<p>Click to Copy</p>
 				</div>
-			</div>
+			</footer>
 		</main>
         <script src="main.js"></script>
 	</body>
 </html>
+
+
