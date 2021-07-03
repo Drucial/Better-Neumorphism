@@ -26,7 +26,7 @@
     br = 5,
     bl = 5;
   
-                            
+    console.log(opacity)                       
   xOffset.addEventListener("input", (e) => {
     x = e.target.value;
     setShadow();
