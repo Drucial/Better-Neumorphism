@@ -185,6 +185,7 @@ main {
 		inset -1px -1px 3px var(--shadow), 
 		3px 3px 5px var(--shadow);
 	border-radius: 1rem;
+	border: none;
 	cursor: pointer;
 	position: relative;
 	z-index: 2;
@@ -199,6 +200,7 @@ main {
 		inset -1px -1px 3px var(--shadow), 
 		3px 3px 5px var(--shadow);
 	border-radius: 1rem;
+	border: none;
 	cursor: pointer;
 	position: relative;
 	z-index: 2;
