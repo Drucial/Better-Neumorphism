@@ -140,12 +140,6 @@ neuEdges.addEventListener("input", () => {
     setCss()
 });
 
-// Radius Slider
-// neuRadius.addEventListener("input", (e) => {
-//     radius = e.target.value
-//     root.style.setProperty("--neu-radius", `${radius}rem`);
-// });
-
 // Code Output
 function setCss() {
     const neuContainer = document.querySelector('.slider-container')

@@ -273,7 +273,7 @@ code p:not(:first-child){
 	box-shadow: 
 		-1px -1px 4px var(--highlight),
 		1px 1px 4px var(--shadow);
-	background: linear-gradient(125deg, var(--color-dark), var(--color-light));
+	background: linear-gradient(var(--color-gradient));
 	cursor: pointer;
 	user-select: none;
 	-webkit-touch-callout: none;
