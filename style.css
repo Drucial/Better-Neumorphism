@@ -4,6 +4,7 @@
 	--box-s: 15%;
 	--box-l: 80%;
 	--direction: -32deg;
+	--box-source: calc(var(--box-l) + 10%);
 	--box-dark: calc(var(--box-l) - 15%);
 	--box-light: calc(var(--box-l) + 15%);
 	--text-color: hsl(var(--box-h), var(--box-s), calc(var(--box-l) - 40%));
@@ -73,7 +74,7 @@ body {
 	linear-gradient(
 		var(--direction), 
 		var(--box-color)70%, 
-		hsl(var(--box-h), var(--box-s), var(--box-light)))
+		hsl(var(--box-h), var(--box-s), var(--box-source)))
 }
 
 header {
