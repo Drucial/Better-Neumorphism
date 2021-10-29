@@ -19,7 +19,7 @@
   const nRadius = document.getElementById("neuRadius");
   const threeDepth = document.getElementById("threeDepth");
   const threeStrength = document.getElementById("threeStrength");
-  const neuModel = document.getElementById("neuModel");
+  const neuModel = document.getElementById("neu-model");
   const root = document.documentElement;
   let s = 50,
       nx = 0,
@@ -102,7 +102,7 @@
     styleArr = box.split('),');
     space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
       
-    document.getElementById('source').innerHTML = "<span>box-shadow:</span> " + styleArr[0] + "),<br/>" + space + styleArr[1] + "),<br/>" + space + styleArr[2] + "),<br/>" + space + styleArr[3] + ";";
+    document.getElementById('source').innerHTML = "<span>box-shadow:</span> " + styleArr[0] + "),<br/>" + styleArr[1] + "),<br/>" + styleArr[2] + "),<br/>" + styleArr[3] + ";";
   }
   
 //   Source Code Copy & Tool Tips
