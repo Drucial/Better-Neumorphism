@@ -126,6 +126,7 @@ main {
 }
 
 .hsl-input {
+	-webkit-appearance: none;
 	height: 2rem;
 	width: 4rem;
 	margin: 0 0.5rem;
