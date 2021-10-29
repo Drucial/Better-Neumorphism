@@ -24,6 +24,11 @@ icon.addEventListener("click", toggleInfo)
 
 // Global Variables
 const root = document.documentElement;
+const neuDir = document.getElementById('neu-direction');
+const neuDepth = document.getElementById('neu-depth');
+const neuStrength = document.getElementById('neu-strength')
+const neuEdges = document.getElementById('neu-edges');
+const neuRadius = document.getElementById('neu-radius');
 
 // Color Input
 const hslInput = document.querySelectorAll('.hsl-input')
@@ -92,7 +97,6 @@ function colorUpdate() {
 }
 
 // Depth Slider
-const neuDepth = document.getElementById('neu-depth');
 function setDepth() {
     neuDistance = neuDepth.value;
     neuNeg = 1 - neuDistance
@@ -101,6 +105,7 @@ function setDepth() {
     root.style.setProperty("--neu-neg-dist", `${neuNeg}px`);
     root.style.setProperty("--neu-ramp", `${rampCalc}px`);
     setStrength()
+    setDirection()
 }
 neuDepth.addEventListener("input", () => {
     setDepth();
@@ -108,7 +113,6 @@ neuDepth.addEventListener("input", () => {
 });
 
 // Strength Slider
-const neuStrength = document.getElementById('neu-strength')
 function setStrength() {
     const multiplier = neuStrength.value;
     const staticLum = getComputedStyle(root).getPropertyValue('--box-l').split("%")[0]
@@ -123,7 +127,6 @@ neuStrength.addEventListener("input", () => {
 });
 
 // Edges Slider
-const neuEdges = document.getElementById('neu-edges');
 function setEdges() {
     edgeDistance = neuEdges.value;
     edgeNeg = -1 * edgeDistance
@@ -138,11 +141,10 @@ neuEdges.addEventListener("input", () => {
 });
 
 // Radius Slider
-const neuRadius = document.getElementById('neu-radius');
-neuRadius.addEventListener("input", (e) => {
-    radius = e.target.value
-    root.style.setProperty("--neu-radius", `${radius}rem`);
-});
+// neuRadius.addEventListener("input", (e) => {
+//     radius = e.target.value
+//     root.style.setProperty("--neu-radius", `${radius}rem`);
+// });
 
 // Code Output
 function setCss() {
@@ -180,8 +182,8 @@ function colorRandomizer(){
     setCss();
 }
 colorRandomizer()
-//   Source Code Copy & Tool Tips 
 
+//   Source Code Copy & Tool Tips 
 const toolTip = document.getElementById("toolTip");
 function alertCopy () {
     toolTip.style.setProperty("opacity", .85);
@@ -192,12 +194,28 @@ function copyToClipboard() {
     navigator.clipboard.writeText(text);
     toolTip.innerHTML = "Copied!";
 }
-
 function resetCopy() {
     toolTip.style.setProperty("opacity", 0);
     toolTip.innerHTML = "Click to Copy";
 }
-
 toolTip.addEventListener("mouseover", alertCopy)
 toolTip.addEventListener("click", copyToClipboard)
 toolTip.addEventListener("mouseout", resetCopy)
+
+// test direction slider
+function setDirection() {
+    const neuDirection = parseFloat(neuDir.value);
+    const gradientDirection = -32
+    const gradDirOffset = - (gradientDirection * neuDirection);
+    const x = parseFloat(getComputedStyle(root).getPropertyValue('--neu-distance').split('px')[0])
+    const dirOffsetX = - (x * neuDirection)
+    const dirNegOffsetX = (x * neuDirection)
+    root.style.setProperty("--neu-x", `${dirOffsetX}px`);
+    root.style.setProperty("--neu-neg-x", `${dirNegOffsetX}px`);
+    root.style.setProperty("--direction", `${gradDirOffset}deg`);
+    setStrength()
+}
+neuDir.addEventListener("input", () => {
+    setDirection();
+    setCss()
+});

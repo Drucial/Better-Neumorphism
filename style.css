@@ -3,6 +3,7 @@
 	--box-h: 207;
 	--box-s: 15%;
 	--box-l: 80%;
+	--direction: -32deg;
 	--box-dark: calc(var(--box-l) - 15%);
 	--box-light: calc(var(--box-l) + 15%);
 	--text-color: hsl(var(--box-h), var(--box-s), calc(var(--box-l) - 40%));
@@ -10,10 +11,12 @@
 	--box-color: hsl(var(--box-h), var(--box-s), var(--box-l));
 	--color-dark: hsl(var(--box-h), var(--box-s), var(--box-dark));
 	--color-light: hsl(var(--box-h), var(--box-s), var(--box-light));
-	--color-gradient: 125deg, var(--color-light), var(--color-dark);
+	--color-gradient: var(--direction), var(--color-light), var(--color-dark);
 	
 	--hl-strength: calc(var(--box-l) * 1.2);
 	--shd-strength: calc(var(--box-l) * (1 - (1.2 - 1)));
+	--neu-x: 7.5px;
+	--neu-neg-x: -7.5px;
 	--neu-distance: 7.5px;
 	--neu-neg-dist: -7.5px;
 	--neu-ramp: 18.75px;
@@ -21,12 +24,12 @@
 	--shadow: hsl(var(--box-h), var(--box-s), var(--shd-strength));
 
 	--neu-outer: 
-		var(--neu-distance) var(--neu-distance) var(--neu-ramp) var(--shadow),
-		var(--neu-neg-dist) var(--neu-neg-dist) var(--neu-ramp) var(--highlight);
+		var(--neu-x) var(--neu-distance) var(--neu-ramp) var(--shadow),
+		var(--neu-neg-x) var(--neu-neg-dist) var(--neu-ramp) var(--highlight);
 
 	--neu-inner: 
-		inset var(--neu-distance) var(--neu-distance) var(--neu-ramp) var(--shadow),
-		inset var(--neu-neg-dist) var(--neu-neg-dist) var(--neu-ramp) var(--highlight);
+		inset var(--neu-x) var(--neu-distance) var(--neu-ramp) var(--shadow),
+		inset var(--neu-neg-x) var(--neu-neg-dist) var(--neu-ramp) var(--highlight);
 
 	--edge-dist: 0px;
 	--edge-neg-dist: 0px;
@@ -34,6 +37,9 @@
 	--neu-edges: 
     	inset var(--edge-neg-dist) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
 		inset var(--edge-dist) var(--edge-dist) var(--edge-ramp) var(--highlight);
+		--neu-edges-outer: 
+    	var(--edge-neg-dist) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
+		var(--edge-dist) var(--edge-dist) var(--edge-ramp) var(--highlight);
 
 	--radius: 1rem;
 	--neu-size: 50%;
@@ -63,6 +69,11 @@ body {
 	justify-content: center;
 	align-items: center;
 	background: var(--box-color);
+	background: 
+	linear-gradient(
+		var(--direction), 
+		var(--box-color)70%, 
+		hsl(var(--box-h), var(--box-s), var(--box-light)))
 }
 
 header {
@@ -136,7 +147,8 @@ main {
 	border: none;
 	border-radius: 1rem;
 	background: var(--box-color);
-	box-shadow: var(--neu-inner);
+	box-shadow: var(--neu-inner),
+	var(--neu-edges-outer);
 }
 
 .hsl-input::placeholder {
@@ -157,7 +169,8 @@ main {
 	height: 2rem;
 	border-radius: 1rem;
 	background: var(--box-color);
-	box-shadow: var(--neu-inner);
+	box-shadow: var(--neu-inner),
+				var(--neu-edges-outer);
 	position: relative;
 }
 
@@ -180,10 +193,11 @@ main {
 	width: 2rem;
 	height: 2rem;
 	background: var(--box-color);
-	background: linear-gradient(125deg, var(--color-dark), var(--color-light));
+	background: linear-gradient(var(--color-gradient));
 	box-shadow: 
-		inset 1px 1px 3px var(--highlight),
-		inset -1px -1px 3px var(--shadow), 
+	var(--neu-edges),
+		/* inset 1px 1px 3px var(--highlight), */
+		/* inset -1px -1px 3px var(--shadow),  */
 		3px 3px 5px var(--shadow);
 	border-radius: 1rem;
 	border: none;
@@ -212,7 +226,7 @@ main {
 	width: 50ch;
 	color: var(--text-light);
 	background: var(--box-color);
-	box-shadow: var(--neu-inner);
+	box-shadow: var(--neu-inner),var(--neu-edges-outer);
 	border-radius: 1rem;
 	position: relative;
 
