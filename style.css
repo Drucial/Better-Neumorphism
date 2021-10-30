@@ -430,6 +430,7 @@ ul {
 
 	.slider-container {
 		padding: 1rem 1rem;
+		width: 90vw;
 	}
 
 	.form-group {
@@ -438,6 +439,10 @@ ul {
 
 	label {
 		margin-bottom: 0.25rem;
+	}
+
+	.color *:not(button) {
+		display: none;
 	}
 
 	.hsl-input {
