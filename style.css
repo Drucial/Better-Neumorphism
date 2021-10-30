@@ -31,16 +31,17 @@
 	--neu-inner: 
 		inset var(--neu-x) var(--neu-distance) var(--neu-ramp) var(--shadow),
 		inset var(--neu-neg-x) var(--neu-neg-dist) var(--neu-ramp) var(--highlight);
-
+	--edge-x: 0px;
+	--edge-neg-x: 0px;
 	--edge-dist: 0px;
 	--edge-neg-dist: 0px;
 	--edge-ramp: 0px;
 	--neu-edges: 
-    	inset var(--edge-neg-dist) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
-		inset var(--edge-dist) var(--edge-dist) var(--edge-ramp) var(--highlight);
+    	inset var(--edge-neg-x) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
+		inset var(--edge-x) var(--edge-dist) var(--edge-ramp) var(--highlight);
 		--neu-edges-outer: 
-    	var(--edge-neg-dist) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
-		var(--edge-dist) var(--edge-dist) var(--edge-ramp) var(--highlight);
+    	var(--edge-neg-x) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
+		var(--edge-x) var(--edge-dist) var(--edge-ramp) var(--highlight);
 
 	--radius: 1rem;
 	--neu-size: 50%;

@@ -134,9 +134,33 @@ function setEdges() {
     root.style.setProperty("--edge-dist", `${edgeDistance}px`);
     root.style.setProperty("--edge-neg-dist", `${edgeNeg}px`);
     root.style.setProperty("--edge-ramp", `${rampCalc}px`);
+    setDirection()
 }
 neuEdges.addEventListener("input", () => {
     setEdges();
+    setCss()
+});
+
+// test direction slider
+function setDirection() {
+    const neuDirection = parseFloat(neuDir.value);
+    const gradientDirection = -32
+    const gradDirOffset = - (gradientDirection * neuDirection);
+    const x = parseFloat(getComputedStyle(root).getPropertyValue('--neu-distance').split('px')[0])
+    const dirOffsetX = - (x * neuDirection)
+    const dirNegOffsetX = (x * neuDirection)
+    const edgeX = parseFloat(getComputedStyle(root).getPropertyValue('--edge-dist').split('px')[0])
+    const dirEdgeOffsetX = - (edgeX * neuDirection)
+    const dirEdgeNegOffsetX = (edgeX * neuDirection)
+    root.style.setProperty("--neu-x", `${dirOffsetX}px`);
+    root.style.setProperty("--neu-neg-x", `${dirNegOffsetX}px`);
+    root.style.setProperty("--direction", `${gradDirOffset}deg`);
+    root.style.setProperty("--edge-x", `${dirEdgeOffsetX}px`);
+    root.style.setProperty("--edge-neg-x", `${dirEdgeNegOffsetX}px`);
+    setStrength()
+}
+neuDir.addEventListener("input", () => {
+    setDirection();
     setCss()
 });
 
@@ -195,21 +219,3 @@ function resetCopy() {
 toolTip.addEventListener("mouseover", alertCopy)
 toolTip.addEventListener("click", copyToClipboard)
 toolTip.addEventListener("mouseout", resetCopy)
-
-// test direction slider
-function setDirection() {
-    const neuDirection = parseFloat(neuDir.value);
-    const gradientDirection = -32
-    const gradDirOffset = - (gradientDirection * neuDirection);
-    const x = parseFloat(getComputedStyle(root).getPropertyValue('--neu-distance').split('px')[0])
-    const dirOffsetX = - (x * neuDirection)
-    const dirNegOffsetX = (x * neuDirection)
-    root.style.setProperty("--neu-x", `${dirOffsetX}px`);
-    root.style.setProperty("--neu-neg-x", `${dirNegOffsetX}px`);
-    root.style.setProperty("--direction", `${gradDirOffset}deg`);
-    setStrength()
-}
-neuDir.addEventListener("input", () => {
-    setDirection();
-    setCss()
-});
