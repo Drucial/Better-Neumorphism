@@ -14,9 +14,11 @@ const info = document.querySelector(".info-container")
 function toggleInfo() {
     if(info.classList.contains('show')){
         info.classList.remove('show');
+        icon.classList.remove('icon-close')
         icon.innerText = "i"
     } else {
         info.classList.add('show');
+        icon.classList.add('icon-close')
         icon.innerText = "X"
     }
 }
@@ -99,11 +101,17 @@ function colorUpdate() {
 // Depth Slider
 function setDepth() {
     neuDistance = neuDepth.value;
+    neuDistanceSmall = neuDepth.value / 2;
     neuNeg = 1 - neuDistance
+    neuNegSmall = 1 - neuDistanceSmall
     rampCalc = neuDistance * 2.5
+    rampCalcSmall = (neuDistance * 2.5) / 2
     root.style.setProperty("--neu-distance", `${neuDistance}px`);
     root.style.setProperty("--neu-neg-dist", `${neuNeg}px`);
+    root.style.setProperty("--neu-distance-small", `${neuDistanceSmall}px`);
+    root.style.setProperty("--neu-neg-dist-small", `${neuNegSmall}px`);
     root.style.setProperty("--neu-ramp", `${rampCalc}px`);
+    root.style.setProperty("--neu-ramp-small", `${rampCalcSmall}px`);
     setStrength()
     setDirection()
 }
@@ -141,7 +149,7 @@ neuEdges.addEventListener("input", () => {
     setCss()
 });
 
-// test direction slider
+// Direction Slider
 function setDirection() {
     const neuDirection = parseFloat(neuDir.value);
     const gradientDirection = -32
@@ -149,11 +157,15 @@ function setDirection() {
     const x = parseFloat(getComputedStyle(root).getPropertyValue('--neu-distance').split('px')[0])
     const dirOffsetX = - (x * neuDirection)
     const dirNegOffsetX = (x * neuDirection)
+    const dirOffsetXSmall = - (x * neuDirection) / 2
+    const dirNegOffsetXSmall = (x * neuDirection) / 2
     const edgeX = parseFloat(getComputedStyle(root).getPropertyValue('--edge-dist').split('px')[0])
     const dirEdgeOffsetX = - (edgeX * neuDirection)
     const dirEdgeNegOffsetX = (edgeX * neuDirection)
     root.style.setProperty("--neu-x", `${dirOffsetX}px`);
     root.style.setProperty("--neu-neg-x", `${dirNegOffsetX}px`);
+    root.style.setProperty("--neu-x-small", `${dirOffsetXSmall}px`);
+    root.style.setProperty("--neu-neg-x-small", `${dirNegOffsetXSmall}px`);
     root.style.setProperty("--direction", `${gradDirOffset}deg`);
     root.style.setProperty("--edge-x", `${dirEdgeOffsetX}px`);
     root.style.setProperty("--edge-neg-x", `${dirEdgeNegOffsetX}px`);

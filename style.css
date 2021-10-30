@@ -4,6 +4,7 @@
 	--box-s: 15%;
 	--box-l: 80%;
 	--direction: -32deg;
+	--direction-reverse: -212deg;
 	--box-source: calc(var(--box-l) + 10%);
 	--box-dark: calc(var(--box-l) - 15%);
 	--box-light: calc(var(--box-l) + 15%);
@@ -13,7 +14,8 @@
 	--color-dark: hsl(var(--box-h), var(--box-s), var(--box-dark));
 	--color-light: hsl(var(--box-h), var(--box-s), var(--box-light));
 	--color-gradient: var(--direction), var(--color-light), var(--color-dark);
-	
+	--reverse-gradient: var(--direction-reverse), var(--color-light), var(--color-dark);
+
 	--hl-strength: calc(var(--box-l) * 1.2);
 	--shd-strength: calc(var(--box-l) * (1 - (1.2 - 1)));
 	--neu-x: 7.5px;
@@ -28,14 +30,24 @@
 		var(--neu-x) var(--neu-distance) var(--neu-ramp) var(--shadow),
 		var(--neu-neg-x) var(--neu-neg-dist) var(--neu-ramp) var(--highlight);
 
+	--neu-outer-small: 
+		var(--neu-x-small) var(--neu-distance-small) var(--neu-ramp-small) var(--shadow),
+		var(--neu-neg-x-small) var(--neu-neg-dist-small) var(--neu-ramp-small) var(--highlight);
+
 	--neu-inner: 
 		inset var(--neu-x) var(--neu-distance) var(--neu-ramp) var(--shadow),
 		inset var(--neu-neg-x) var(--neu-neg-dist) var(--neu-ramp) var(--highlight);
+
+	--neu-inner-small: 
+		inset var(--neu-x-small) var(--neu-distance-small) var(--neu-ramp-small) var(--shadow),
+		inset var(--neu-neg-x-small) var(--neu-neg-dist-small) var(--neu-ramp-small) var(--highlight);
+
 	--edge-x: 0px;
 	--edge-neg-x: 0px;
 	--edge-dist: 0px;
 	--edge-neg-dist: 0px;
 	--edge-ramp: 0px;
+
 	--neu-edges: 
     	inset var(--edge-neg-x) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
 		inset var(--edge-x) var(--edge-dist) var(--edge-ramp) var(--highlight);
@@ -135,6 +147,7 @@ main {
 .color {
 	display: flex;
 	align-items: center;
+	gap: 1rem;
 	color: var(--text-light);
 }
 
@@ -142,7 +155,7 @@ main {
 	-webkit-appearance: none;
 	height: 2rem;
 	width: 4rem;
-	margin: 0 0.5rem;
+	/* margin: 0 0.5rem; */
 	padding: 1rem;
 	color: var(--text-light);
 	text-align: center;
@@ -163,6 +176,48 @@ main {
 	-webkit-appearance: none;
 	margin: 0;
 }
+
+#color-btn {
+	font-family: 'Satisfy', cursive;
+	font-size: 1rem;
+	color: var(--text-color);
+	background: var(--box-color);
+	padding: .4rem 2rem;
+	margin-left: .5rem;
+	border: none;
+	border-radius: var(--radius);
+	box-shadow: 
+		var(--neu-outer-small),
+		var(--neu-edges);
+	cursor: pointer;
+
+	position: relative;
+}
+
+#color-btn::after {
+	position: absolute;
+	content: '';
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-radius: var(--radius);
+	box-shadow: 
+		var(--neu-inner-small),
+		var(--neu-edges-outer);
+	opacity: 0;
+	transition: opacity 300ms;
+}
+
+#color-btn:active {
+	box-shadow: none;
+	transform: scale(.98);
+}
+
+#color-btn:active::after {
+	opacity: 1;
+	transform: scale(1)
+  }
 
 .slider {
 	-webkit-appearance: none;
@@ -271,15 +326,48 @@ code p:not(:first-child){
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: var(--neu-edges-outer),
-	var(--neu-edges);
-	background: linear-gradient(var(--color-gradient));
+	box-shadow: 
+		/* var(--neu-edges), */
+		var(--neu-outer-small);
+	background: var(--box-color);
+	z-index: 5;
 	cursor: pointer;
 	user-select: none;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
-	z-index: 5;
 }
+
+.icon-close {
+	box-shadow: 
+		var(--neu-outer-small),
+		var(--neu-edges);
+	background: linear-gradient(var(--color-gradient));
+}
+
+.icon::after {
+	position: absolute;
+	content: '';
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-radius: var(--radius);
+	box-shadow: 
+		var(--neu-inner-small),
+		var(--neu-edges-outer);
+	opacity: 0;
+	transition: opacity 300ms;
+}
+
+.icon:active {
+	box-shadow: none;
+	transform: scale(.98);
+}
+
+.icon:active::after {
+	opacity: 1;
+	transform: scale(1)
+  }
 
 .info-container {
 	display: none;
@@ -302,6 +390,7 @@ code p:not(:first-child){
 	width: 100%;
 	height: 100%;
 	border-radius: var(--neu-radius);
+	box-shadow: var(--neu-edges);
 	padding: 2rem;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
