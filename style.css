@@ -39,7 +39,7 @@
 	--neu-edges: 
     	inset var(--edge-neg-x) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
 		inset var(--edge-x) var(--edge-dist) var(--edge-ramp) var(--highlight);
-		--neu-edges-outer: 
+	--neu-edges-outer: 
     	var(--edge-neg-x) var(--edge-neg-dist) var(--edge-ramp) var(--shadow),
 		var(--edge-x) var(--edge-dist) var(--edge-ramp) var(--highlight);
 
@@ -271,9 +271,8 @@ code p:not(:first-child){
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 
-		-1px -1px 4px var(--highlight),
-		1px 1px 4px var(--shadow);
+	box-shadow: var(--neu-edges-outer),
+	var(--neu-edges);
 	background: linear-gradient(var(--color-gradient));
 	cursor: pointer;
 	user-select: none;
