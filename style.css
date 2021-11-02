@@ -16,6 +16,12 @@
 	--color-gradient: var(--direction), var(--color-light), var(--color-dark);
 	--reverse-gradient: var(--direction-reverse), var(--color-light), var(--color-dark);
 
+	--shadow-x: 3px;
+	--shadow-distance: 3px;
+	--shadow-ramp: 6px;
+	--shadow-color: rgba(0 0 0 / .2);
+	--actual-shadow: var(--shadow-x) var(--shadow-distance) var(--shadow-ramp) var(--shadow-color);
+
 	--hl-strength: calc(var(--box-l) * 1.2);
 	--shd-strength: calc(var(--box-l) * (1 - (1.2 - 1)));
 	--neu-x: 7.5px;
@@ -252,10 +258,8 @@ main {
 	background: var(--box-color);
 	background: linear-gradient(var(--color-gradient));
 	box-shadow: 
-	var(--neu-edges),
-		/* inset 1px 1px 3px var(--highlight), */
-		/* inset -1px -1px 3px var(--shadow),  */
-		3px 3px 5px var(--shadow);
+		var(--neu-edges),
+		var(--actual-shadow);
 	border-radius: 1rem;
 	border: none;
 	cursor: pointer;

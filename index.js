@@ -162,6 +162,8 @@ function setDirection() {
     const edgeX = parseFloat(getComputedStyle(root).getPropertyValue('--edge-dist').split('px')[0])
     const dirEdgeOffsetX = - (edgeX * neuDirection)
     const dirEdgeNegOffsetX = (edgeX * neuDirection)
+    const shdX = parseFloat(getComputedStyle(root).getPropertyValue('--shadow-distance').split('px')[0])
+    const shdOffsetX = - (shdX * neuDirection)
     root.style.setProperty("--neu-x", `${dirOffsetX}px`);
     root.style.setProperty("--neu-neg-x", `${dirNegOffsetX}px`);
     root.style.setProperty("--neu-x-small", `${dirOffsetXSmall}px`);
@@ -169,6 +171,7 @@ function setDirection() {
     root.style.setProperty("--direction", `${gradDirOffset}deg`);
     root.style.setProperty("--edge-x", `${dirEdgeOffsetX}px`);
     root.style.setProperty("--edge-neg-x", `${dirEdgeNegOffsetX}px`);
+    root.style.setProperty("--shadow-x", `${shdOffsetX}px`);
     setStrength()
 }
 neuDir.addEventListener("input", () => {
