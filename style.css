@@ -17,10 +17,14 @@
 	--reverse-gradient: var(--direction-reverse), var(--color-light), var(--color-dark);
 
 	--shadow-x: 3px;
+	--shadow-neg-x: calc(-1 * (var(--shadow-x)));
 	--shadow-distance: 3px;
+	--shadow-neg-dist: calc(-1 * (var(--shadow-distance)));
 	--shadow-ramp: 6px;
 	--shadow-color: rgba(0 0 0 / .2);
+	--highlight-color: rgba(255 255 255 / .15);
 	--actual-shadow: var(--shadow-x) var(--shadow-distance) var(--shadow-ramp) var(--shadow-color);
+	--actual-highlight: var(--shadow-neg-x) var(--shadow-neg-dist) var(--shadow-ramp) var(--highlight-color);
 
 	--hl-strength: calc(var(--box-l) * 1.2);
 	--shd-strength: calc(var(--box-l) * (1 - (1.2 - 1)));
@@ -253,13 +257,14 @@ main {
 .slider::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	appearance: none;
-	width: 2rem;
-	height: 2rem;
+	width: 1.9rem;
+	height: 1.9rem;
 	background: var(--box-color);
 	background: linear-gradient(var(--color-gradient));
 	box-shadow: 
 		var(--neu-edges),
-		var(--actual-shadow);
+		var(--actual-shadow),
+		var(--actual-highlight);
 	border-radius: 1rem;
 	border: none;
 	cursor: pointer;
@@ -268,8 +273,8 @@ main {
 }
 
 .slider::-moz-range-thumb {
-	width: 2rem;
-	height: 2rem;
+	width: 1.9rem;
+	height: 1.9rem;
 	background: var(--box-color);
 	box-shadow: 
 		inset 1px 1px 3px var(--highlight),
